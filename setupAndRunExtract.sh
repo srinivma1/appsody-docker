@@ -46,18 +46,6 @@ appsody extract -v
 # Copy the extracted contents to /workspace/extracted
 cp -rf /builder/home/.appsody/extract/$postfix/* /builder/home/.appsody/extract/$postfix/.[!.]* /workspace/extracted/
 ls -latr /workspace/extracted
-echo "Running appsody operator install..."
-set +e
-errormessage=$( appsody operator install 2>&1 > /dev/null)
 
-if [ ! "$?" == 0 ]; then
-  echo Error message: $errormessage
-  if [[ "$errormessage" == *"An operator already exists"* ]]; then
-    echo "Operator already exists - continue processing..."
-  else
-    echo "Failed to install the Appsody operator"
-    exit 1
-  fi
-fi
 
 echo "Done!"
