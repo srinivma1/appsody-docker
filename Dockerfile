@@ -3,7 +3,7 @@ FROM gcr.io/cloud-builders/docker
 RUN apt-get update && \
       apt-get -y install sudo jq wget
 
-ARG CLI_VERSION
+ENV CLI_VERSION=0.5.3
 ENV KUBE_VERSION="v1.11.1"
 RUN wget https://storage.googleapis.com/kubernetes-release/release/${KUBE_VERSION}/bin/linux/amd64/kubectl
 RUN mv ./kubectl /usr/local/bin
